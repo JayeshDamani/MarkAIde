@@ -1,0 +1,534 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Bullseye</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="https://fonts.googleapis.com/css?family=PT Sans Narrow' rel='stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Fjalla One' rel='stylesheet">
+
+<link rel="stylesheet" href="{% static 'css/w3.css' %}">
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
+
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+<!-- Latest compiled and minified CSS -->
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+<!-- Popper JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+		<style>
+		    /* Remove the navbar's default margin-bottom and rounded borders */ 
+		    .navbar {
+		      margin-bottom: 0;
+		      border-radius: 0;
+		    }
+		    
+		    /* Set height of the grid so .sidenav can be 100% (adjust as needed) */
+		    .row.content {height: 450px}
+		    
+		    /* Set gray background color and 100% height */
+		    .sidenav {
+		      padding-top: 20px;
+		      background-color: #f1f1f1;
+		      height: 100%;
+		    }
+		    
+		    /* Set black background color, white text and some padding */
+		    footer {
+		      background-color: #555;
+		      color: white;
+		      padding: 15px;
+		    }
+		    
+		    /* On small screens, set height to 'auto' for sidenav and grid */
+		    @media screen and (max-width: 767px) {
+		      .sidenav {
+		        height: auto;
+		        padding: 15px;
+		      }
+		      .row.content {height:auto;} 
+		    }
+	  	</style>
+ 
+
+</head>
+<body class="w3-light-grey">
+
+<!-- Sidebar/menu -->
+<nav class="w3-sidebar w3-bar-block w3-black w3-animate-right w3-top w3-text-light-grey w3-large" style="z-index:3;width:250px;font-weight:bold;display:none;right:0;" id="mySidebar">
+  <a href="javascript:void()" onclick="w3_close()" class="w3-bar-item w3-button w3-center w3-padding-32">CLOSE</a> 
+  
+ 
+
+  <a href="#home" onclick="w3_close()" class="w3-bar-item w3-button w3-center w3-padding-16">HOME </a> 
+  <a href="#MARKAIDE" onclick="w3_close()" class="w3-bar-item w3-button w3-center w3-padding-16">MARKAIDE</a> 
+  <a href="#SPEND ADD/REMOVE" onclick="w3_close()" class="w3-bar-item w3-button w3-center w3-padding-16">SPEND ADD/REMOVE</a> 
+  <a href="#VISUALIZATION" onclick="w3_close()" class="w3-bar-item w3-button w3-center w3-padding-16">VISUALIZATION</a>
+  <a href="#advanced" onclick="w3_close()" class="w3-bar-item w3-button w3-center w3-padding-16">ADVANCED FEATURES & CAPABILITIES</a>
+  <a href="#CONTACT US" onclick="w3_close()" class="w3-bar-item w3-button w3-center w3-padding-16">CONTACT US</a>
+  {% if user.is_authenticated %}
+  <a href="{% url 'logout' %}" onclick="w3_close()" class="w3-bar-item w3-button w3-center w3-padding-16">LOGOUT</a>
+  
+  {% endif %}
+</nav>
+
+<!-- Top menu on small screens -->
+<header class="header_nav w3-container w3-top w3-white w3-xlarge w3-padding-16">
+  <span class="w3-left w3-padding"><img src="{% static 'images/logo.png' %}"></span>
+  <a href="javascript:void(0)" class="w3-right w3-button w3-white" onclick="w3_open()"><img src="{% static 'images/menu.png' %}"></a>
+</header>
+
+<!------------------------------Slider------------------->
+<div id="home">
+<div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img src="{% static 'images/slide1.jpg' %}" class="d-block w-100" alt="...">
+    </div>
+    <div class="carousel-item">
+      <img src="{% static 'images/slide2.jpg' %}" class="d-block w-100" alt="...">
+    </div>
+    <div class="carousel-item">
+      <img src="{% static 'images/slide3.jpg' %}" class="d-block w-100" alt="...">
+    </div>
+  </div>
+  
+ 
+</div>
+</div>
+  
+<!---------------------------------Login-section---------------------->
+{% if user.is_authenticated %}
+<div></div>
+{% else %}
+<div class="login-section">
+<div class="container">
+<div class="row">
+<div class="col-md-6">
+<h2> VIDEO </h2>
+<div class="videos">
+<img src="{% static 'images/video.jpg' %}">
+</div>
+</div>
+
+
+<div class="col-md-6 login_form_sec">
+<div class="log-sec">
+<div class="w3-bar w3-black tab_head">
+  <button class="w3-bar-item w3-button login_text active" onclick="openCity('Login')">Login</button>
+  <button class="w3-bar-item w3-button register_text" onclick="openCity('Register')">SIGN UP</button>
+</div>
+
+<div id="Login" class="w3-container city">
+  <form method="POST" enctype="multipart/form-data"  style="max-width:600px!important;margin:auto">
+	{% csrf_token %}
+	{% for field in login_form %}
+  <div class="input-container">
+    <i class="fa fa-user icon"></i>
+    {{field}}
+  </div>
+  
+  {% endfor %}
+  {%if login_form.errors%}
+  {% for error in login_form.non_field_errors %}
+            <li>{{ error }}</li>
+  {% endfor %}
+  {% endif %}
+   <!--<div class="input-container">
+    <i class="fa fa-key icon"></i>
+    <input class="input-field pwd" type="password" placeholder="Password" name="psw">
+  </div> -->
+	<p class="forgot_pwd"><a href="#">Forgot Password?</a></p>
+  <button type="submit" class="submit_btn btn">LOGIN</button>
+</form>
+</div>
+
+<div id="Register" class="w3-container city" style="display:none">
+  <form method="POST" enctype="multipart/form-data" action ="{% url 'index' %}" style="max-width:600px!important;margin:auto">
+	{% csrf_token %}
+	{% for field in form %}
+  <div class="input-container">
+    <i class="fa fa-user icon"></i>
+	<!--<input class="input-field mail" type="email" placeholder="Email" name="email"> -->
+	{{field}}
+  </div> 
+  {% endfor %}
+  
+  <!--  <div class="input-container">
+    <i class="fa fa-key icon"></i>
+    <input class="input-field pwd" type="password" placeholder="Password" name="psw">
+  </div>
+  -->
+
+  <button type="submit" class="submit_btn btn">Sign up</button>
+</form> 
+</div>
+
+
+</div>
+</div>
+</div>
+</div>
+</div>
+{% endif %}
+<!----------------------------------about us---------------------------------------->
+
+<div id="MARKAIDE">
+<div class="about-section">
+<div class="container">
+<div class="row">
+<div class="coloumn1">
+<div class="marketing">
+<div class="abt-img">
+<img src="{% static 'images/Optimizing-your-Marketing.png' %}">
+<h3>Optimizing your Marketing spends just became child’s play</h3>
+</div>
+<p>Why waste time on tracking spends on a spreadsheet when you can make informed decisions without lifting a finger?<br></br>
+It’s been a long standing question– how to get the best out of my marketing budget? With billions of dollars on the line and consumers shopping across platforms and media channels, Marketing Mix Modeling (MMM) gives marketers the confidence they are making the right investment decision.</p>
+</div>
+</div>
+
+<div class="coloumn2">
+<img src="{% static 'images/abt.jpg' %}">
+</div>
+
+
+<div class="coloumn3">
+<div class="spends">
+<img src="{% static 'images/Introducing-MarkAIde.png' %}">
+<h3>Introducing MarkAIde, the smart new tool to optimize your marketing spends</h3>
+</div>
+<p>With MarkAIde, you can shorten the time taken to measure the effectiveness and reach of your marketing and advertising campaigns and get the best insights to get a bang for every buck spent– in other words, smartest Marketing Mix Model tool yet</p>
+</div>
+</div>
+
+
+
+<div class="row2">
+<div class="coloumn4">
+<div class="work">
+<img src="{% static 'images/How-does-it-work.png' %}">
+<h3>How does it Work?</h3>
+</div>
+<p>MarkAIde uses advanced indices and measurement techniques to track and quantify the performance of each element of the marketing mix. It also analyses the various segments of your marketing operation and builds cognitive models that help construct patterns and derive deep insights. This allows you to have a granular view of every single dollar spent towards marketing and outreach and helps you focus on channels that are performing better.</p>
+</div>
+
+
+<div class="coloumn5">
+<div class="invest">
+<img src="{% static 'images/Why-should-you.png' %}">
+<h3>Why should you invest on MarkAIde?</h3>
+</div>
+<p>With MarkAIde, you can customize your marketing spend models to address specific markets, geographies, brands, and verticals. Building such extensive models allows you to capture your entire spend, from commissioning to conversion, and get the best idea on what works for the business. This allows you to deconstruct missteps and use the learning to make better decisions. The result? Your brand awareness improves. Your bottom line expands and along with it boosts other key metrics such as conversions and sales</p>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+
+<!---------------------------------Spen add/remove ---------------------------------->
+
+<div class="spendadd-section" id="SPEND ADD/REMOVE">
+	<div class="container">
+		<h2>Spend Add/Remove</h2>
+		<div align="right" class="temp_download">
+			<a href="{% static 'Sample_Template.csv' %}" target="_blank" class="temp_down btn btn-primary">Download Template</a>
+			
+			<form method ="POST" enctype="multipart/form-data" action="{% url 'vis' %}">
+				{% csrf_token %}
+				<input type ="file" name ="file-csv">
+				<input type ="submit" value ="submit">
+			</form>
+		</div>
+		<br />
+
+	<!--<form id="upload_csv" method="post" enctype="multipart/form-data">
+		<div class="col-md-3">
+			<br />
+		<label>Select CSV File</label>
+		</div>  
+		<div class="col-md-4">  
+			<input type="file" name="csv_file" id="csv_file" accept=".csv" style="margin-top:15px;" />
+		</div>  
+		<div class="col-md-5">  
+			<input type="submit" name="upload" id="upload" value="Upload" style="margin-top:10px;" class="btn btn-info" />
+		</div>  
+		<div style="clear:both"></div>
+	</form>-->
+	<br />
+	<br />
+	<div id="csv_file_data"></div>
+</div>
+</div>
+
+
+<!--------------------------------------MARKETING & SALES ------------------------->
+<div id="VISUALIZATION">
+<div class="marketing-section">
+<div class="container">
+<div class="row">
+<div class="col-md-4 column1">
+<div class="marketing-img">
+<img src="{% static 'images/Spend-Viz-category.png' %}">
+</div>
+<div class="marketing-desc">
+<h3> Spend Viz Category</h3>
+<p> kuch aur dalana hai </p>
+</div>
+</div>
+
+<div class="col-md-4">
+<div class="marketing-img">
+<img src="{% static 'images/Marketing-Drivers.png' %}">
+</div>
+<div class="marketing-desc">
+<h3> Marketing Drivers</h3>
+<p> Kuch aur dalana hai </p>
+</div>
+</div>
+
+<div class="col-md-4 column3">
+<div class="marketing-img">
+<img src="{% static 'images/Sales-Revenue-Decomposition.png' %}">
+</div>
+<div class="marketing-desc">
+<h3> Sales Revenue Decomposition</h3>
+<p> kuch aur dalana hai </p>
+</div>
+</div>
+</div>
+</div>
+</div>
+ </div>
+ 
+<!----------------------------------Advanced FEATURES--------------------------->
+<div id="advanced">
+ <div class="Advanced-section">
+<div class="container">
+<div class="advaced-header">
+<h1> Advanced-Features & Capabilities </h1>
+</div>
+<div class="row">
+<div class="col-md-6 advanced_imag">    
+ <img src="{% static 'images/Advanced-Features.jpg' %}"> 
+</div>
+
+<div class="col-md-6 advanced_content">   
+<div class="advanced-desc"> 
+ <p> kuch aur part1 
+</p><p> kuch aur part 2</p>
+ </div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-------------------------------------Contact Section----------------------------->
+<div class="contact-section" id="CONTACT US">
+<div class="container">
+<div class="row">
+<div class="col-md-4 even column1">
+<div class="et_pb_blurb_content">
+<div class="et_pb_main_blurb_image">
+<img src="{% static 'images/adrs.png' %}">
+</div>
+<div class="et_pb_blurb_container">
+<div class="et_pb_blurb_description">
+<p><strong>Main Branch</strong> : #511, NSR Road,<br>At S.Bend, Saibaba Colony,<br>Coimbatore -641 038, TamilNadu.</p></div>
+</div>
+</div>
+</div>
+
+<div class="col-md-4 even column2">
+<div class="et_pb_blurb_content">
+<div class="et_pb_main_blurb_image">
+<img src="{% static 'images/mail.png' %}">
+</div>
+<div class="et_pb_blurb_container">
+<div class="et_pb_blurb_description">
+<p><a href="#">info@website.com</a></p></div>						
+</div>
+</div>
+</div>
+
+<div class="col-md-4 column3">
+<div class="et_pb_blurb_content">
+<div class="et_pb_main_blurb_image">
+<img src="{% static 'images/phn.png' %}">
+</div>
+<div class="et_pb_blurb_container">			
+<div class="et_pb_blurb_description">
+<p><a href="tel:+91 9043723203">+91 9043723203</a></p>
+<p><a href="tel:+91 9043723203">+91 9043723203</a></p></div>
+</div>
+</div>
+</div>
+
+</div>
+	
+</div>
+</div>
+<!-------------------------------------main footer----------------------------->
+<div class="main-footer">
+<div class="footer-bottom">
+<div class="container clearfix">
+<div class="footer_rights">
+<p>All Rights Reserved. MarkAIde</p>
+</div>
+
+<div class="footer_social">
+<ul class="et-social-icons">
+<li class="et-social-icon et-social-facebook" style="display: inline-block;
+    margin-left: 20px;">
+		<a target="_blank" href="https://www.facebook.com/" class="icon">
+			
+		</a>
+	</li>
+	<li class="et-social-icon et-social-linkedin" style="display: inline-block;
+    margin-left: 8px;">
+		<a target="_blank" href="https://in.linkedin.com/" class="icon">
+			
+		</a>
+	</li>
+	</ul>
+	
+	</div>
+	<div class="footer_develop">
+	<a href="https://www.pgsoftwares.com/" target="_blank">Website Designing</a> PG softwares
+	</div>
+</div>
+</div>
+ </div>
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+<script>
+// Script to open and close sidebar
+function w3_open() {
+  document.getElementById("mySidebar").style.display = "block";
+  document.getElementById("myOverlay").style.display = "block";
+}
+
+function w3_close() {
+  document.getElementById("mySidebar").style.display = "none";
+  document.getElementById("myOverlay").style.display = "none";
+}
+
+// Modal Image Gallery
+function onClick(element) {
+  document.getElementById("img01").src = element.src;
+  document.getElementById("modal01").style.display = "block";
+  var captionText = document.getElementById("caption");
+  captionText.innerHTML = element.alt;
+}
+
+</script>
+<script>
+function openCity(cityName) {
+  var i;
+  var x = document.getElementsByClassName("city");
+  for (i = 0; i < x.length; i++) {
+    x[i].style.display = "none";  
+  }
+  document.getElementById(cityName).style.display = "block";  
+}
+</script>
+<script>
+		  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+		  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+		  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+		  ga('create', 'UA-87739877-1', 'auto');
+		  ga('send', 'pageview');
+
+		</script>
+
+</body>
+</html>
+<script>
+
+$(document).ready(function(){
+	$('#upload_csv').on('submit', function(event){
+		event.preventDefault();
+		$.ajax({
+			url:"fetch.php",
+			method:"POST",
+			data:new FormData(this),
+			dataType:'json',
+			contentType:false,
+			cache:false,
+			processData:false,
+			success:function(data)
+			{
+				var html = '<table class="table table-striped table-bordered">';
+				if(data.column)
+				{
+					html += '<tr>';
+					for(var count = 0; count < data.column.length; count++)
+					{
+						html += '<th>'+data.column[count]+'</th>';
+					}
+					html += '</tr>';
+				}
+
+				if(data.row_data)
+				{
+					for(var count = 0; count < data.row_data.length; count++)
+					{
+						html += '<tr>';
+						html += '<td class="student_name" contenteditable>'+data.row_data[count].student_name+'</td>';
+						html += '<td class="student_phone" contenteditable>'+data.row_data[count].student_phone+'</td></tr>';
+					}
+				}
+				html += '<table>';
+				html += '<div align="center"><button type="button" id="import_data" class="btn btn-success">Import</button></div>';
+
+				$('#csv_file_data').html(html);
+				$('#upload_csv')[0].reset();
+			}
+		})
+	});
+
+	$(document).on('click', '#import_data', function(){
+		var student_name = [];
+		var student_phone = [];
+		$('.student_name').each(function(){
+			student_name.push($(this).text());
+		});
+		$('.student_phone').each(function(){
+			student_phone.push($(this).text());
+		});
+		$.ajax({
+			url:"import.php",
+			method:"post",
+			data:{student_name:student_name, student_phone:student_phone},
+			success:function(data)
+			{
+				$('#csv_file_data').html('<div class="alert alert-success">Data Imported Successfully</div>');
+			}
+		})
+	});
+});
+
+</script>

@@ -1,0 +1,109 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+{% load plotly_dash %}
+	<head>
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+		<title>
+			Datatale
+		</title>
+
+	</head>
+	<body>
+
+<script>
+	
+	function changeFigure(){
+			
+		var x = document.getElementById("select_month").value;
+		var element = String.raw'{{fig}}'
+		document.getElementById("figure").innerHTML = element
+		
+	}
+</script>
+
+<div id="VISUALIZATION">
+<div class="marketing-section">
+<div class="container">
+<div class="row">
+<!-- <div class="col-md-12">
+<div class="marketing-img">
+<img src="{% static 'images/Spend-Viz-category.png' %}">
+</div>
+<div class="marketing-desc">
+<h3> Spend Viz Category</h3>
+<p>MarkAIde aims to measure past marketing performance so you can use it to improve future marketing return on investment. Here is the visual for your past marketing spends - </p>
+<br>
+<div class="col-md-6">
+<div id="figure">
+{{ fig.1|safe}}
+</div>
+</div>
+</div>
+</div> -->
+
+
+<div class="col-md-6">
+<div class="marketing-img">
+<img src="{% static 'images/Spend-Viz-category.png' %}">
+</div>
+<div class="marketing-desc">
+<h3> Spend Viz Category</h3>
+<p>MarkAIde aims to measure past marketing performance so you can use it to improve future marketing return on investment. Here is the visual for your past marketing spends - </p>
+<br>{{fig.0|safe}}
+</div>
+<select name="Month" onchange="changeFigure()" id="select_month">
+			
+			{% for month in MY %}
+			<option value="{{month}}">{{month}}</option>
+			
+			{% endfor %}	
+</select>
+</div>
+
+
+
+
+<div class="col-md-6">
+<div class="marketing-desc">
+<br><br><br><br><br><br><br><br>	
+<br>{{fig2|safe}}
+</div>
+</div>
+
+
+<div class="col-md-6">
+<div class="marketing-img">
+<img src="{% static 'images/Marketing-Drivers.png' %}">
+</div>
+<div class="marketing-desc">
+<h3> Marketing Drivers</h3>
+<p>MarkAIde Interprets your data statistically and looks at your marketing effectiveness, efficiency and returns. We measure incremental sales and revenue for all tactics so you can better understand drivers of incremental profit. Based on your past market spends provided, your key marketing drivers.are shown here.</p>
+<br>{{fig3|safe}}
+</div>
+</div>
+
+<div class="col-md-6">
+<div class="marketing-img">
+<img src="{% static 'images/Sales-Revenue-Decomposition.png' %}">
+</div>
+<div class="marketing-desc">
+<h3> Sales Revenue Decomposition</h3>
+<p>MarkAIde decompose sales/revenue into the baseline and each of the factors driving your business. Our analysis shows your marketing spends drive sales by four factors: the general trend in your data, general economic cycles, seasonality, and irregular or random occurrence. Based on the details you have provided your sales revenue decomposition visual is here. </p>
+<br>{{fig4|safe}}
+</div>
+</div>
+</div>
+</div>
+</div>
+ </div>
+ </div>
+</div>
+
+
+			
+	</body>
+	
+	
+</html>

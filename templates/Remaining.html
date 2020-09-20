@@ -1,0 +1,371 @@
+
+<?php
+
+function customer_list()
+{
+    include('dbconfig.php');
+    
+    $sql="select * from excelimport ";
+                
+	$result=mysqli_query($conn,$sql);
+        	
+        // 	 `name`, `email`, `mobile`, `address`, `comany_name`, `gst_no`, `fax_no`,
+        //         `product_name`, `service_status`, `quote`, `reg_date`
+        		while($row = mysqli_fetch_array($result)) 
+        		{?>
+        		 <tr>
+        			
+        			
+        			<td ><?php echo $row['Facebook'];?></td>
+                    <td ><?php echo $row['Google'];?></td>
+                    <td ><?php echo $row['Instagram'];?></td>
+        			<td ><?php echo $row['Email'];?></td>
+        			<td>
+  				     <a href="c_add.php" data-toggle="tooltip" data-placement="top" title="Add"><button type="button" class="btn btn-info " ><i class="ti-add"></i></button></a>
+        			<!-- <a href="c_view.php?c_v_id=<?php echo $row['Id'];?>" data-toggle="tooltip" data-placement="top" title="View"><button type="button" name="" class="btn btn-info"><i class="ti-search"></i></button></a>
+        			--> <a href="c_update.php?Id=<?php echo $row['Id'];?>" data-toggle="tooltip" data-placement="top" title="Edit"><button type="button" name="" class="btn btn-primary"><i class="ti-pencil"></i></button></a>
+        			 <a href="customer.php?c_del=<?php echo $row['Id'];?>" data-toggle="tooltip" data-placement="top" title="Delete"><button type="button" name="" class="btn btn-danger"><i class="ti-trash"></i></button></a>
+        			   
+        			</td>
+        			
+        		</tr> 	
+        		<?php 
+        		}
+        		
+}
+
+//   <button class="btn btn-primary btn-outline-primary btn-icon"><i class="icofont icofont-user-alt-3"></i></button>
+//                     <button class="btn btn-success btn-outline-success btn-icon"><i class="icofont icofont-check-circled"></i></button>
+//                     <button class="btn btn-info btn-outline-info btn-icon"><i class="icofont icofont-info-square"></i></button>
+//                     <button class="btn btn-warning btn-outline-warning btn-icon"><i class="icofont icofont-warning-alt"></i></button>
+//                     <button class="btn btn-danger btn-outline-danger btn-icon"><i class="icofont icofont-eye-alt"></i></button>
+//                     <button class="btn btn-inverse btn-outline-inverse btn-icon"><i class="icofont icofont-exchange"></i></button>
+//                     <button class="btn btn-disabled btn-outline-disabled btn-icon disabled"><i class="icofont icofont-not-allowed"></i></button>
+//                 </div>
+function error2()
+    {
+        if(isset($_GET['error2']) && $_GET['error2']) 
+    	{
+    	?>
+    		<div class="container">
+    			    <div class="alert alert-success alert-dismissible">
+    				        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+    					    <strong>Profile Updated successfully!!</strong>
+    				</div>
+    		</div>
+    	<?php
+        
+        }
+    }
+    function error3()
+    {
+        if(isset($_GET['error3']) && $_GET['error3']) 
+    	{
+    	?>
+    		<div class="container">
+    			    <div class="alert alert-danger alert-dismissible">
+    				        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+    					    <b>Updated failed..Email or Mobile already exists!!</b>
+    				</div>
+    		</div>
+    	<?php
+        
+        }
+    }
+    
+      function err_e()
+    {
+        if(isset($_GET['err_e']) && $_GET['err_e']) 
+    	{
+    	?>
+    		<div class="container">
+    			    <div class="alert alert-warning alert-dismissible">
+    				        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+    					    <b>Email Address already exists!!</b>
+    				</div>
+    		</div>
+    	<?php
+        
+        }
+    }
+
+  function err_m()
+    {
+        if(isset($_GET['err_m']) && $_GET['err_m']) 
+    	{
+    	?>
+    		<div class="container">
+    			    <div class="alert alert-warning alert-dismissible">
+    				        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+    					    <b>Mobile number already exists!!</b>
+    				</div>
+    		</div>
+    	<?php
+        
+        }
+    }
+
+
+    function error4()
+    {
+        if(isset($_GET['error4']) && $_GET['error4']) 
+    	{
+    	?>
+    		<div class="container">
+    			    <div class="alert alert-success alert-dismissible">
+    				        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+    					    <strong>Password Updated successfully!!</strong>
+    				</div>
+    		</div>
+    	<?php
+        
+        }
+    }
+    function error5()
+    {
+        if(isset($_GET['error5']) && $_GET['error5']) 
+    	{
+    	?>
+    		<div class="container">
+    			    <div class="alert alert-danger alert-dismissible">
+    				        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+    					    <strong>Passwrod Updation failed..Please try again!!</strong>
+    				</div>
+    		</div>
+    	<?php
+        
+        }
+    }
+    
+    function error6()
+    {
+        if(isset($_GET['error6']) && $_GET['error6']) 
+    	{
+    	?>
+    		<div class="container">
+    			    <div class="alert alert-warning alert-dismissible">
+    				        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+    					    <strong>New password and Confirm password not match!!</strong>
+    				</div>
+    		</div>
+    	<?php
+        
+        }
+    }
+    function error7()
+    {
+        if(isset($_GET['error7']) && $_GET['error7']) 
+    	{
+    	?>
+    		<div class="container">
+    			    <div class="alert alert-warning alert-dismissible">
+    				        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+    					    <strong>Old password wrong!!</strong>
+    				</div>
+    		</div>
+    	<?php
+        
+        }
+    }
+    function emptyf()
+    {
+        if(isset($_GET['emptyf']) && $_GET['emptyf']) 
+    	{
+    	?>
+    		<div class="container">
+    			    <div class="alert alert-warning alert-dismissible">
+    				        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+    					    <strong>Empty field found!!</strong>
+    				</div>
+    		</div>
+    	<?php
+        
+        }
+    }function noc()
+    {
+        if(isset($_GET['noc']) && $_GET['noc']) 
+    	{
+    	?>
+    		<div class="container">
+    			    <div class="alert alert-success alert-dismissible">
+    				        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+    					    <strong>No changes made!!</strong>
+    				</div>
+    		</div>
+    	<?php
+        
+        }
+    }
+    
+    
+    
+     function error8()
+    {
+        if(true) 
+    	{
+    	?>
+    		<div class="container">
+    			    <div class="alert alert-success alert-dismissible">
+    				        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+    					    <strong>Customer Details deleted successfully!!</strong>
+    				</div>
+    		</div>
+    	<?php
+        
+        }
+    }
+     function error9()
+    {
+        if(true) 
+    	{
+    	?>
+    		<div class="container">
+    			    <div class="alert alert-danger alert-dismissible">
+    				        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+    					    <strong>Customer Details deletion failed!!</strong>
+    				</div>
+    		</div>
+    	<?php
+        
+        }
+    }
+    
+    ?>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="spendadd-section" id="SPEND ADD/REMOVE">
+<div class="container">
+    <h2>Spend Add/Remove</h2>
+    <!--<div align="right" class="temp_download">
+        <a href="tesmp.csv" target="_blank" class="temp_down btn btn-primary">Download Template</a>
+        <form id="upload_csv" method="post" enctype="multipart/form-data">  
+        <input type="file" name="csv_file" id="csv_file" accept=".csv" style="margin-top:15px;" />
+        <input type="submit" name="upload" id="upload" value="Bulk Upload" style="margin-top:10px;" class="bulk_upload btn btn-info" />
+        </form>
+    </div>
+    
+    <div id="csv_file_data"></div>-->
+      <!-- Pre-loader start -->
+    <div class="theme-loader">
+        <div class="loader-track">
+            <div class="loader-bar"></div>
+        </div>
+    </div>
+    <!-- Pre-loader end -->
+    <div id="pcoded" class="pcoded">
+        <div class="pcoded-overlay-box"></div>
+        <div class="pcoded-container navbar-wrapper">
+            <div class="pcoded-main-container">
+                <div class="pcoded-wrapper">
+                    <div class="pcoded-content">
+                        <div class="pcoded-inner-content">
+                            <div class="main-body">
+                                <div class="page-wrapper">
+                                    <div class="page-body">
+                                      <div class="row">
+                                          <div class="col-sm-12">
+                                             <!-- Bootstrap tab card start -->
+                                             <div class="card">
+                                                <!--<div class="card-header for_head">
+                                                    <div class="card-header-right">
+                                                        <a href="c_add.php"><button type="button" class="btn btn-info " >Add Customer</button></a>
+                                                    </div>
+                                                </div>-->
+                                                <br>
+                                                 <?php 
+                                                  error2();
+                                                  error3();
+                                                  err_m();
+                                                  err_e();
+                                                  noc();
+                                                  emptyf(); error4();
+                                                  error5();error6();
+                                                  error7();
+                                                  if(isset($_GET["c_del"]))
+                                                  {
+                                                    $Id=$_GET["c_del"];
+                                                    $sql="delete from excelimport where Id='$Id'";
+                                                    $result=mysqli_query($conn,$sql);
+                                                            if($result)
+                                                            {
+                                                                  error8();
+                                                            }
+                                                            else
+                                                            {
+                                                                  error9();
+                                                            }
+                                                        }
+                                                    ?>
+                                                    <div class="card-block for_content">
+                                                        <div class="table-responsive">
+                                                            <table class="table" id="customer">
+                                                                <thead>
+                                                                    
+                                                                    
+                                                                    <th>Facebook</th>
+                                                                    <th>Google</th>
+                                                                    <th>Instagram</th>
+                                                                    <th>Email</th>
+                                                                    <th>Edit</th>
+                                                                </thead>
+                                                                <tbody>
+                                                                    <?php customer_list();?>
+                                                                </tbody>
+                                                            </table>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!-- Bootstrap tab card end -->
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div id="styleSelector">
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+</div>
+</div>  
+  
+  
+  
